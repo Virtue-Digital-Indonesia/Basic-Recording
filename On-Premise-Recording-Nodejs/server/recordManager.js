@@ -81,7 +81,7 @@ class RecordManager {
       let recorder = this.find(sid);
 
       if (!recorder) {
-        console.error("no reocrder found");
+        console.error("no recorder found");
         return;
       }
       let { layout } = recorder;
@@ -105,7 +105,7 @@ class RecordManager {
       let recorder = this.find(sid);
 
       if (!recorder) {
-        console.error("no reocrder found");
+        console.error("no recorder found");
         return;
       }
 
