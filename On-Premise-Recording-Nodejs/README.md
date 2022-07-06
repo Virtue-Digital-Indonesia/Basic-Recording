@@ -148,6 +148,32 @@ Response Properties:
 |:----|:----- |-----   |
 |success  |bool |operation result   |
 
+#### Download Recording
+
+- `http://localhost:3000/recorder/v1/download`
+  
+Method:
+
+- GET
+
+Parameters:
+ 
+
+|Name|Mandatory|Type|Desc|
+|:----    |:---|:----- |-----   |
+|sid |Y  |string |sid when you start the recorder   |
+
+Example:
+```
+curl -i -X GET -H "Content-type: application/json" http://localhost:3000/recorder/v1/download?sid=ccca9307-c9b3-4224-b729-e055dda9bd1c
+```
+
+Sample Response:
+
+```
+ccca9307-c9b3-4224-b729-e055dda9bd1c.mp4
+```
+
 ## Resources
 - See full API documentation in the [Document Center](https://docs.agora.io/en/)
 - [File bugs about this sample](https://github.com/AgoraIO/Basic-Recording/issues)

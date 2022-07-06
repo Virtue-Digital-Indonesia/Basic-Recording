@@ -41,6 +41,36 @@ app.post('/recorder/v1/stop', (req, res, next) => {
     });
 })
 
+app.get('/recorder/v1/download', (req, res, next) => {
+    let sid = req.query.sid;
+    if (!sid) {
+        throw new Error("sid is mandatory");
+    }
+
+    let recorderInfo = RecordManager.fetchInfo(sid);
+    let videos = recorderInfo.filename;
+
+    if (recorderInfo.status == "Recording") {
+        throw new Error("sid is recording");
+    }
+
+    if (videos <= 0) {
+        throw new Error("no video found with sid");
+    }
+
+    res.download(
+        videos[0], 
+        sid + ".mp4", // Remember to include file extension
+        (err) => {
+            if (err) {
+                res.send({
+                    error : err,
+                    msg   : "Problem downloading the file"
+                })
+            }
+    });
+})
+
 app.use( (err, req, res, next) => {
     console.error(err.stack)
     res.status(500).json({
